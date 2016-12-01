@@ -5,18 +5,18 @@
  */
 package br.edu.ifsul.dao;
 
-import br.edu.ifsul.trabalho.Especialidade;
+import br.edu.ifsul.trabalho.Consulta;
 import java.io.Serializable;
 
 /**
  *
  * @author Ariel
  */
-public class EspecialidadeDAO<T> extends DAOGenerico<Especialidade> implements Serializable{
-    public EspecialidadeDAO(){
+public class ConsultaDAO<T> extends DAOGenerico<Consulta> implements Serializable{
+    public ConsultaDAO(){
         super();
-        super.setClassPersistente(Especialidade.class);
-        super.setOrdem("descricao");
+        super.setClassPersistente(Consulta.class);
+        super.setOrdem("id");
         
     }
 }
