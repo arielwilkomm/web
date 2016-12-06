@@ -142,7 +142,7 @@
                         </p:tab>
                         <p:tab title="Exames da Consulta">
                             <p:dataTable value="#{controleConsulta.objeto.exame}"
-                                         var="item" rowIndexVar="idx" id="listaItens">
+                                         var="exame" rowIndexVar="idx" id="listaItens">
                                 <f:facet name="header">
                                     <p:commandButton value="Novo Item" actionListener="#{controleConsulta.novoExame()}"
                                                      update=":formItem" icon="ui-icon-plus"
@@ -167,8 +167,7 @@
                                                          icon="ui-icon-thash"
                                                          actionListener="#{controleConsulta.removerExame(idx)}"
                                                          process="btnRemoverItem"
-                                                         update="listaItens :formEdicao:growl 
-                                                         :formEdicao:tab:txtValorTotal"/>
+                                                         update="listaItens :formEdicao:growl"/>
                                     </div>
                                 </p:column>
                             </p:dataTable>
@@ -185,11 +184,19 @@
                             <div align="center">
                                 <p:commandButton id="btnAdicionarItem" value="Salvar" icon="ui-icon-disk"
                                                  actionListener="#{controleConsulta.salvarExame()}"
-                                                 update=":formEdicao:growl :formItem :formEdicao:tab:listaItens
-                                                 :formEdicao:tab:txtValorTotal" process="@form"
+                                                 update=":formEdicao:growl :formItem :formEdicao:tab:listaItens"
+                                                 process="@form"
                                                  oncomplete="if(!args.validationFailed){PF('dlgItem').hide();}"/>
                             </div>
                         </f:facet>
+                        <p:outputLabel value="Nome" for="txtNome"/>
+                        <p:inputText id="txtNome" value="#{controleConsulta.exame.nome}"
+                                                 size="40" maxlength="40"
+                                                 placeholder="Obrigatório"/>
+                        <p:outputLabel value="Descrição" for="txtDescricao"/>
+                                    <p:editor id="txtDescricao" widgetVar="editorWidget" 
+                                              value="#{controleConsulta.exame.descricao}" 
+                                              width="300" height="160" />
                     </p:panelGrid>
                 </h:form>
             </p:dialog>
